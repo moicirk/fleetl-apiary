@@ -1,0 +1,133 @@
+FORMAT: 1A
+HOST: http://polls.apiblueprint.org/
+
+# Fleetl client API
+
+GrapqhQL
+
+## GraphQL API [/]
+    
+### Get requests [GET /?operationName=requestsList]
+
++ Response 200 (application/json)
+
+        {
+            "data": {
+                "requests": [
+                    {
+                        "id": "1",
+                        "date": "2019-02-25 12:00:00",
+                        "newMessagesCount": 0,
+                        "service": {
+                            "id": "1",
+                            "name": "Haircut",
+                            "__typename": "Tag"
+                        },
+                        "location": {
+                            "id": "1",
+                            "name": "Lasnamae, Mustakivi",
+                            "__typename": "Location"
+                        },
+                        "__typename": "Request"
+                    }
+                ]
+            }
+        }
+        
+### Get single request [GET /?operationName=request]
+        
++ Response 200 (application/json)
+
+        {
+            "data": {
+                "requests": [
+                    {
+                        "id": "1",
+                        "date": "2019-02-25 12:00:00",
+                        "newMessagesCount": 0,
+                        "service": {
+                            "id": "1",
+                            "name": "Haircut",
+                            "__typename": "Tag"
+                        },
+                        "location": {
+                            "id": "1",
+                            "name": "Lasnamae, Mustakivi",
+                            "__typename": "Location"
+                        },
+                        "offers": [
+                            {
+                                "id": "1",
+                                "newMessagesCount": 3,
+                                "isAccepted": false,
+                                "account": {
+                                    "id": "1",
+                                    "name": "Anna Karimova",
+                                    "salon": {
+                                        "id": "1",
+                                        "name": "SI StyleSalong",
+                                        "address": "Tornimae 5, Tallinn",
+                                        "__typename": "Salon"
+                                    },
+                                    "__typename": "Account"
+                                },
+                                "__typename": "Offer"
+                            }
+                        ],
+                        "__typename": "Request"
+                    }
+                ]
+            }
+        }
+        
+### Get single request offer [GET /?operationName=offer]
+        
++ Response 200 (application/json)
+
+        {
+            "data": {
+                "offers": [
+                    {
+                        "id": "1",
+                        "newMessagesCount": 3,
+                        "isAccepted": false,
+                        "account": {
+                            "id": "1",
+                            "name": "Anna Karimova",
+                            "salon": {
+                                "id": "1",
+                                "name": "SI StyleSalong",
+                                "address": "Tornimae 5, Tallinn",
+                                "__typename": "Salon"
+                            },
+                            "__typename": "Account"
+                        },
+                        "messages": [
+                            {
+                                "id": "1",
+                                "sender": null,
+                                "text": "Hi, I need 'Haircut' on 25th of February at Mustakivi, Tallinn",
+                                "__typename": "OfferMessage"
+                            },
+                            {
+                                "id": "2",
+                                "sender": null,
+                                "text": "I have curly blond hair",
+                                "__typename": "OfferMessage"
+                            },
+                            {
+                                "id": "3",
+                                "sender": {
+                                    "id": "1",
+                                    "name": "Anna Karimova",
+                                    "__typename": "Account"
+                                },
+                                "text": "Hi, I can provide this service for you",
+                                "__typename": "OfferMessage"
+                            }
+                        ],
+                        "__typename": "Offer"
+                    }
+                ]
+            }
+        }
